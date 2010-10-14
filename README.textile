@@ -2,10 +2,6 @@ h2. Is a point in the US?
 
 p. This short experiment tries to answer whether or not a given point forms part of the (lower 48) US.
 
-    * take an object
-    * reference it in a global (magic) hash
-    * commit!
-
 h2. How it works
 
 p. For any given latitude on the globe, there is only a range of values that the longitude can take in order to still be considered part of the US. The problem becomes finding the edges that form the range for each latitude in which the US owns land. 
