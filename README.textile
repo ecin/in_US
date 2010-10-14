@@ -1,0 +1,36 @@
+h2. Is a point in the US?
+
+p. This short experiment tries to answer whether or not a given point forms part of the (lower 48) US.
+
+    * take an object
+    * reference it in a global (magic) hash
+    * commit!
+
+h2. How it works
+
+p. For any given latitude on the globe, there is only a range of values that the longitude can take in order to still be considered part of the US. The problem becomes finding the edges that form the range for each latitude in which the US owns land. 
+
+p. Right now we've calculated (some, not all) ranges for every 0.01 latitude degrees, which means we're accurate to a 0.69 mile radius.
+
+h2. How we test
+
+p. The probability that a random point on the globe is within the (lower 48) US is 1.5832%, if we divide the area that the (lower 48) US takes up and divide it by the area of the entire world*. Thus, given enough random points, we can test how accurate our algorithm is. Thus far, we're hovering somewhere around 80% accuracy.
+
+* Area information taken from Wikipedia. A simpler solution to the problem might be to simply edit those values on Wikipedia. It's all about truthiness, right?
+
+h2. Why bother?
+
+p. Done correctly, we should be able to calculate whether a given point falls in the (lower 48) US in O(1) time.
+
+h2. Example
+
+<pre>
+  <code>
+    require 'point'
+
+    Point.new # without arguments, it generates a random latitude/longitude pair     
+    point = Point.new -45.23, -1.09
+
+    point.in_US? # => false
+  </code>
+</pre>
